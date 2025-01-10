@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1736123642 source:d:\coding\c\simulasi uas\main.c
+	<stdio.h>
+	<stdlib.h>
+

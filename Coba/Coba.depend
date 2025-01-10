@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1730905665 source:d:\coding\c\coba\main.c
+	<stdio.h>
+	<stdlib.h>
+

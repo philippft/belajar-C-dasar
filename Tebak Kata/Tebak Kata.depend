@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1733904918 source:d:\coding\c\tebak kata\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

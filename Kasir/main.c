@@ -128,7 +128,7 @@ void bayar(struct Barang *daftar, int nomorBarang) {
 
         //looping untuk melunasi pembayaran
         while (uangDibayar < subtotal) {
-            printf("Masukkan uang bayar untuk %s (subtotal: %.2f): ", daftar[no].nama, subtotal);
+            printf("Masukkan uang bayar untuk %s (subtotal: %.2f): ", daftar[no].nama, subtotal-uangDibayar);
             float uangInput;
             scanf("%f", &uangInput);
             uangDibayar += uangInput;
@@ -196,43 +196,61 @@ void hapus(struct Barang *daftar, int *nomorBarang) {
         return;
     }
 
+    int pil;
+    printf("1.Hapus Semua\n2.Hapus Per Item\nMau Hapus Semua atau hapus per item: ");
+    scanf("%d", &pil);
+
     int index;
-    printf("Masukkan nomor barang yang ingin dihapus: ");
-    scanf("%d", &index);
+    switch(pil){
+        case 1:
+            *nomorBarang = 0;
+            printf("Semua Barang sudah dihapus!\n");
+            break;
+        case 2:
 
-    //validasi nomor yang dipilih
-    if (index < 1 || index > *nomorBarang) {
-        printf("Nomor item tidak valid!\n\n");
-        return;
+                printf("Masukkan nomor barang yang ingin dihapus: ");
+                    scanf("%d", &index);
+
+                    //validasi nomor yang dipilih
+                    if (index < 1 || index > *nomorBarang) {
+                        printf("Nomor item tidak valid!\n\n");
+                        return;
+                    }
+
+                    //proses penghapusan barang
+                    for (int i = index - 1; i < *nomorBarang; i++) {
+                        daftar[i] = daftar[i + 1];
+                    }
+
+                    /*
+                    1. kopi
+                    2. roti
+                    3. air
+                    4. gula
+
+                    1. kopi
+                    2. air
+                    3. gula
+                    4.
+
+                    */
+
+
+                    // mengurangi nomor
+                    (*nomorBarang)--;
+                    /*
+                    1. kopi
+                    2. air
+                    3. gula
+                    */
+                    printf("Barang berhasil dihapus!\n\n");
+                    break;
+        default:
+            printf("Pilihan tidak ada!");
     }
 
-    //proses penghapusan barang
-    for (int i = index - 1; i < *nomorBarang - 1; i++) {
-        daftar[i] = daftar[i + 1];
-    }
-
-    /*
-    1. kopi
-    2. roti
-    3. air
-    4. gula
-
-    1. kopi
-    2. air
-    3. gula
-    4.
-
-    */
 
 
-    // mengurangi nomor
-    (*nomorBarang)--;
-    /*
-    1. kopi
-    2. air
-    3. gula
-    */
-    printf("Barang berhasil dihapus!\n\n");
 }
 
 //fungsi utama dalam menjalankan program kasir
